@@ -1,5 +1,6 @@
 from .directory import Directory
 from .file import File
+from .size import Size
 
 import os
 
@@ -21,7 +22,7 @@ def analyse(path):
             subdir = analyse(item_path)
             root.children.append(subdir)
         elif os.path.isfile(item_path):
-            file = File(os.path.basename(item_path), os.path.getsize(item_path))
+            file = File(os.path.basename(item_path), Size(os.path.getsize(item_path)))
             root.children.append(file)
-            
+
     return root

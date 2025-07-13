@@ -6,12 +6,12 @@ import argparse
 def print_tree(root, max_depth, max_breadth, depth = 0, prefix=""):
     curr_breadth = 0
     if depth == 0:
-        print(f"{root.name}/ ({root.get_size()} bytes)")
+        print(f"{root.name}/ ({root.get_size()})")
 
     for child in root.children:
         if child.get_type() == NodeType.FILE:
             if curr_breadth < max_breadth:
-                print(f"{prefix}|-- {child.name} ({child.get_size()} bytes)")
+                print(f"{prefix}|-- {child.name} ({child.get_size()})")
             elif curr_breadth == max_breadth:
                 print(f"{prefix}|-- (...)")
             curr_breadth += 1

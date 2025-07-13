@@ -1,5 +1,6 @@
 from .node import Node
 from .node_type import NodeType
+from .size import Size
 
 class Directory(Node):
     def __init__(self, name):
@@ -10,7 +11,7 @@ class Directory(Node):
         return NodeType.DIRECTORY
     
     def get_size(self):
-        size = 0
+        size = Size(0)
         for child in self.children:
             size += child.get_size()
         return size
