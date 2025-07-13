@@ -18,7 +18,7 @@ def print_tree(root, max_depth, max_breadth, depth = 0, prefix=""):
         elif child.get_type() == NodeType.DIRECTORY:
             if depth < max_depth:
                 print(f"{prefix}|-- {child.name}")
-                print_tree(child, max_depth, max_breadth, depth + 1, prefix=f"|{prefix}   ")
+                print_tree(child, max_depth, max_breadth, depth + 1, prefix=f"{prefix}|   ")
         else:
             print("unknown type")
 
