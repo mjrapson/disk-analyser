@@ -1,8 +1,18 @@
 from .directory import Directory
 from .file import File
+from .node_type import NodeType
 from .size import Size
 
 import os
+
+def by_type(node):
+    return (node.get_type().value, node.name.lower())
+
+def sort(root):
+    root.children = sorted(root.children, key=by_type)
+    for child in root.children:
+        if child.get_type() == NodeType.DIRECTORY:
+            sort(child)
 
 def analyse(path):
     if path == "":

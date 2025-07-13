@@ -1,4 +1,4 @@
-from src.analyser.analyser import analyse
+from src.analyser.analyser import analyse, sort
 from src.analyser.node_type import NodeType
 
 import argparse
@@ -28,6 +28,7 @@ def main():
 
     print(f"Scanning {args.dir}...")
     root = analyse(args.dir)
+    sort(root)
 
     print("+-----------------------------------+")
     print(f"| Report for {args.dir}")
