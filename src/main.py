@@ -25,11 +25,17 @@ def print_tree(root, max_depth, max_breadth, depth = 0, prefix=""):
 def main():
     arg_parser = argparse.ArgumentParser(prog="Disk Analyser")
     arg_parser.add_argument("--dir", required=True, help="Root folder to analyse")
+    arg_parser.add_argument("--depth", required=False, default=2, help="Maximum directory depth to print in output")
+    arg_parser.add_argument("--breadth", required=False, default=3, help="Maximum breadth of child items to print in output. Extra items will be truncated to (...)")
     args = arg_parser.parse_args()
 
     print(f"Scanning {args.dir}...")
     root = analyse(args.dir)
-    print_tree(root, 1, 3)
+
+    print("+-----------------------------------+")
+    print(f"| Report for {args.dir}")
+    print("+-----------------------------------+")
+    print_tree(root, args.depth, args.breadth)
 
 
 if __name__ == "__main__":
